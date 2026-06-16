@@ -1,3 +1,18 @@
 spring:
   application:
     name: dashboard
+
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:${app.sqlite.path:./data/dashboard.db}
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: optional:classpath:data.sql
+
+app:
+  sqlite:
+    path: ./data/dashboard.db
+
