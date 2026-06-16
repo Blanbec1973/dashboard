@@ -14,6 +14,7 @@ import org.heyner.dashboard.infrastructure.persistence.sqlite.SqliteSnapshotRepo
 import org.heyner.dashboard.infrastructure.persistence.sqlite.SqliteTargetRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.simple.JdbcClient;
 
 /**
  * Configuration Spring de l'application.
@@ -24,8 +25,8 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public TargetRepository targetRepository() {
-        return new SqliteTargetRepository();
+    public TargetRepository targetRepository(JdbcClient jdbcClient) {
+        return new SqliteTargetRepository(jdbcClient);
     }
 
     @Bean
