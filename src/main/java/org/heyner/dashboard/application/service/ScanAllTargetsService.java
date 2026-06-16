@@ -1,5 +1,6 @@
 package org.heyner.dashboard.application.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.heyner.dashboard.domain.model.*;
 import org.heyner.dashboard.domain.port.in.ScanAllTargetsUseCase;
 import org.heyner.dashboard.domain.port.out.*;
@@ -15,6 +16,7 @@ import java.util.UUID;
  * <p>Cette classe orchestre la lecture des cibles actives, le lancement du scan technique
  * adapté au type de cible et la persistance des résultats.</p>
  */
+@Slf4j
 public class ScanAllTargetsService implements ScanAllTargetsUseCase {
 
     private final TargetRepository targetRepository;
@@ -40,6 +42,7 @@ public class ScanAllTargetsService implements ScanAllTargetsUseCase {
 
     @Override
     public ScanRun scanAllTargets() {
+        log.debug("scanAllTargets");
         ScanRun scanRun = new ScanRun(UUID.randomUUID(), Instant.now(), null, ScanStatus.SUCCESS, null);
         scanRunRepository.save(scanRun);
 

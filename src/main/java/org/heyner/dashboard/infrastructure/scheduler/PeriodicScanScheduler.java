@@ -1,5 +1,6 @@
 package org.heyner.dashboard.infrastructure.scheduler;
 
+import lombok.extern.slf4j.Slf4j;
 import org.heyner.dashboard.domain.port.in.ScanAllTargetsUseCase;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  * Déclenche le scan complet à intervalle régulier.
  */
 @Component
+@Slf4j
 public class PeriodicScanScheduler {
 
     private final ScanAllTargetsUseCase scanAllTargetsUseCase;
@@ -17,6 +19,7 @@ public class PeriodicScanScheduler {
      */
     public PeriodicScanScheduler(ScanAllTargetsUseCase scanAllTargetsUseCase) {
         this.scanAllTargetsUseCase = scanAllTargetsUseCase;
+        log.debug("Building PeriodicScanScheduler");
     }
 
     /**

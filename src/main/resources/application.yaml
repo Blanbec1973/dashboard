@@ -16,3 +16,7 @@ app:
   sqlite:
     path: ./data/dashboard.db
 
+logging:
+  level:
+    root: DEBUG
+

@@ -30,8 +30,8 @@ public class AppConfig {
     }
 
     @Bean
-    public ScanRunRepository scanRunRepository() {
-        return new SqliteScanRunRepository();
+    public ScanRunRepository scanRunRepository(JdbcClient jdbcClient) {
+        return new SqliteScanRunRepository(jdbcClient);
     }
 
     @Bean
